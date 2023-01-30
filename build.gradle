@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.5.0.2"
+
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+
+    implementation group: 'com.sparkjava', name: 'spark-template-thymeleaf', version: '2.7.1'
+// https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-client
+    implementation 'org.jboss.resteasy:resteasy-client:6.2.2.Final'
+// https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core
+    implementation 'org.jboss.weld.servlet:weld-servlet-core:5.1.0.Final'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation 'org.slf4j:slf4j-simple:2.0.0-alpha1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+    // https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api
+    compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    // https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson2-provider
+    implementation 'org.jboss.resteasy:resteasy-jackson2-provider:6.2.1.Final'
+}
+
+
+task copyLibs(type: Copy) {
+    from configurations.runtimeClasspath
+    into 'build/libs/libs'
+}
+
+jar {
+    archiveFileName = "${project.name}.jar"
+    manifest {
+        attributes ('Main-Class': "com.distribuida.Servidor" ,
+                'Class-Path': configurations.runtimeClasspath.files.collect { "libs/$it.name" }.join(' ')
+        )
+    }
+}
+
