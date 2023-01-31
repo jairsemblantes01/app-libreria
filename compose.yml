@@ -16,7 +16,7 @@ services:
       datasource.password: 12345678
       datasource.jdbc.url: jdbc:postgresql://181.215.242.75:10007/distribuida
     ports:
-      - "9000:8082"
+      - "8082:9000"
   front-service:
     image: jairum/app-libreria:1.0
     deploy:
