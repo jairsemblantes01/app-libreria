@@ -31,7 +31,7 @@ public class BookConection implements BookService {
 
 
 CloseableHttpClient httpclient = HttpClients.createDefault();
-String urlBook = "http://localhost:8081/books";
+String urlBook = "http://book-service:8081/books";
 
 
 public BookConection() {

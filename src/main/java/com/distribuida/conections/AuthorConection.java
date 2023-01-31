@@ -30,7 +30,7 @@ public class AuthorConection implements AuthorService {
 private AuthorService authorConection;
 
 CloseableHttpClient httpclient = HttpClients.createDefault();
-String urlAuthor = "http://localhost:8082/authors";
+String urlAuthor = "http://author-service:8082/authors";
 
 public AuthorConection() {
 }
