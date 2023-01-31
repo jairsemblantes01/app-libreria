@@ -1,13 +1,13 @@
 version: '3'
 services:
   book-service:
-    image: jairum/api-books:1.0
+    image: jaimesalvador/api-books:1.0
     deploy:
       replicas: 1
     ports:
       - "8081:8081"
   author-service:
-    image: jairum/api-autores:1.0
+    image: jaimesalvador/api-autores:1.0
     deploy:
       replicas: 1
     environment:
@@ -19,7 +19,7 @@ services:
     ports:
       - "8082:8082"
   front-service:
-    image: jairum/app-libreria:1.0
+    image: jaimesalvador/app-libreria:1.0
     deploy:
       replicas: 1
     ports:
