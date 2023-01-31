@@ -11,12 +11,13 @@ services:
     deploy:
       replicas: 1
     environment:
-      datasource.db-kind: postgresql
-      datasource.username: ubuntu
-      datasource.password: 12345678
-      datasource.jdbc.url: jdbc:postgresql://181.215.242.75:10007/distribuida
+      quarkus.datasource.db-kind: postgresql
+      quarkus.datasource.username: ubuntu
+      quarkus.datasource.password: 12345678
+      quarkus.datasource.jdbc.url: jdbc:postgresql://181.215.242.75:10007/distribuida
+      quarkus.http.port: 8082
     ports:
-      - "8082:9000"
+      - "8082:8082"
   front-service:
     image: jairum/app-libreria:1.0
     deploy:
